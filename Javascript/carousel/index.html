@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+}
+
+#nextBtn,#prevBtn{
+    font-size: 100px;
+    font-weight: bolder;
+}
+
+
+.active {
+  display: block;
+}
+</style>
+<body>
+    <button id="prevBtn"><</button>
+    <div class="slideshow-container">
+        <div class="slide">
+          <img src="https://images.pexels.com/photos/17811/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500"  width="600px" height="300px" alt="Image 1">
+        </div>
+        <div class="slide">
+          <img src="https://images.pexels.com/photos/247502/pexels-photo-247502.jpeg?cs=srgb&dl=pexels-pixabay-247502.jpg&fm=jpg"  w="600px" height="300px" alt="Image 2">
+        </div>
+        <div class="slide">
+          <img src="https://imageio.forbes.com/specials-images/imageserve/5faad4255239c9448d6c7bcd/Best-Animal-Photos-Contest--Close-Up-Of-baby-monkey/960x0.jpg?format=jpg&width=960" height="300px" w="600px" alt="Image 3">
+        </div>
+      </div>
+      <button id="nextBtn">></button>
+      
+</body>
+<script>
+    const slides = document.getElementsByClassName("slide");
+    let currentSlide = 0;
+    slides[currentSlide].classList.add("active");
+document.getElementById("nextBtn").addEventListener("click", function() {
+  goToSlide(currentSlide + 1);
+});
+document.getElementById("prevBtn").addEventListener("click", function() {
+  goToSlide(currentSlide - 1);
+});
+function goToSlide(n) {
+  slides[currentSlide].classList.remove("active");
+  currentSlide = (n + slides.length) % slides.length;
+  slides[currentSlide].classList.add("active");
+}
+</script>
+</html>
