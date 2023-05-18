@@ -5,7 +5,7 @@ function App() {
   const [number, setNumber] = useState("");
   const [res, setRes] = useState({});
   var myHeaders = new Headers();
-  myHeaders.append("apikey", "Z0kdsbxShiH6xs4bdSv85IykVoNqmxx0");
+  myHeaders.append("apikey", "bM8X7UZjP5S6YkhbQTnOMFUAW83WpT73");
   
   var requestOptions = {
     method: "GET",
@@ -18,7 +18,7 @@ function callApi(number){
     requestOptions
   )
     .then((response) => response.text())
-    .then((result) => setRes(result))
+    .then((result) => setRes(JSON.parse(result)))
     .catch((error) => console.log("error", error));
 }
   return (
@@ -28,15 +28,10 @@ function callApi(number){
         placeholder="enter number"
         onChange={(e) => setNumber(e.target.value)}
       />
-      <button onClick={callApi(number)}>Submit</button>
+      <button onClick={()=>callApi(number)}>Submit</button>
       <div>
-        {
-          Object.keys(res).forEach(key => {
-            <p>{key}:{res[key]}</p>
-            // Perform other actions with key and value
-          })
-        }
-        {/* <p>valid:{res.valid || "N/A"}</p>
+       
+        <p>valid:{res.valid?"TRUE":"N/A"}</p>
         <p>number:{res.number || "N/A"} </p>
         <p>local_format: {res.local_format || "N/A"}</p>
         <p> international_format:{res.international_format || "N/A"} </p>
@@ -45,7 +40,7 @@ function callApi(number){
         <p>country_name:{res.country_name || "N/A"} </p>
         <p>location: {res.location || "N/A"}</p>
         <p> carrier:{res.carrier || "N/A"} </p>
-        <p>line_type:{res.line_type || "N/A"} </p> */}
+        <p>line_type:{res.line_type || "N/A"} </p>
       </div>
     </div>
   );

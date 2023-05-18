@@ -25,7 +25,7 @@ function checkWinner(board) {
   const board = [
     "X", null, "O",
     null, "X", "O",
-    "X", null, "X"
+    "X", null, null
   ];
   
   const winner = checkWinner(board);
